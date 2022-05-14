@@ -24,7 +24,7 @@ public class NumberWizard : MonoBehaviour
         speelGetal = Random.Range(minGetal, maxGetal + 1);
         raadGetal.text = speelGetal.ToString();
         raadPogingen--;
-        CheckWinCondition();
+        
        
     }
 
@@ -33,7 +33,7 @@ public class NumberWizard : MonoBehaviour
         speelGetal = Random.Range(minGetal, maxGetal + 1);
         raadGetal.text = speelGetal.ToString();
         raadPogingen--;
-        CheckWinCondition();
+        
     }
 
     void CheckWinCondition()
@@ -46,14 +46,16 @@ public class NumberWizard : MonoBehaviour
 
    public void RaadHoger()
     {
-        minGetal = speelGetal;
+        CheckWinCondition();
+        minGetal = speelGetal + 1;
         RaadVolgende();
     }
 
 
     public void RaadLager()
     {
-        maxGetal = speelGetal;
+        CheckWinCondition();
+        maxGetal = speelGetal - 1;
         RaadVolgende();
     }
 
