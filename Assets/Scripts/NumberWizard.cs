@@ -9,6 +9,7 @@ public class NumberWizard : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI raadGetal;
     [SerializeField] int minGetal = 1;
     [SerializeField] int maxGetal = 1000;
+    [SerializeField] int raadPogingen = 4;
 
     int speelGetal;
 
@@ -17,12 +18,25 @@ public class NumberWizard : MonoBehaviour
     {
         speelGetal = Random.Range(minGetal, maxGetal + 1);
         raadGetal.text = speelGetal.ToString();
+        raadPogingen--;
+        CheckWinCondition();
+       
     }
 
     void RaadVolgende()
     {
         speelGetal = Random.Range(minGetal, maxGetal + 1);
         raadGetal.text = speelGetal.ToString();
+        raadPogingen--;
+        CheckWinCondition();
+    }
+
+    void CheckWinCondition()
+    {
+        if(raadPogingen == 0)
+        {
+            Debug.Log("implement you win screen");
+        }
     }
 
    public void RaadHoger()
@@ -36,5 +50,10 @@ public class NumberWizard : MonoBehaviour
     {
         maxGetal = speelGetal;
         RaadVolgende();
+    }
+
+    public void CorrectGeraden()
+    {
+        Debug.Log("implement you lose Screen");
     }
 }
