@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
 public class NumberWizard : MonoBehaviour
 {
     [SerializeField] TMPro.TextMeshProUGUI raadGetal;
@@ -13,9 +14,13 @@ public class NumberWizard : MonoBehaviour
 
     int speelGetal;
 
+    //cached references
+    SceneHandler sceneHandler;
+
     // Start is called before the first frame update
     void Start()
     {
+        sceneHandler = FindObjectOfType<SceneHandler>();
         speelGetal = Random.Range(minGetal, maxGetal + 1);
         raadGetal.text = speelGetal.ToString();
         raadPogingen--;
@@ -35,7 +40,7 @@ public class NumberWizard : MonoBehaviour
     {
         if(raadPogingen == 0)
         {
-            Debug.Log("implement you win screen");
+            sceneHandler.LaadWinScreen();
         }
     }
 
@@ -54,6 +59,6 @@ public class NumberWizard : MonoBehaviour
 
     public void CorrectGeraden()
     {
-        Debug.Log("implement you lose Screen");
+        sceneHandler.LaadLoseScreen();
     }
 }
